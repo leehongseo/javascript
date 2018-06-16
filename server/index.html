@@ -8,7 +8,10 @@
 </head>
 <body>
     <div id="div1">div1</div> <!-- div 안에 있는 id class title 등등을 프로퍼티라고 함-->
-    <button type="button" onclick="test();">눌러보시오</button> <!--제이쿼리 안쓰고 이벤트하는방법1 온클릭을 써서 이벤트 하는 방법  //onlcick" " 안쪽은 무조건 자바스크립트-->
+    ID : <input type="text" id="id111"><br>
+    PWD : <input type="password" id="pwd"><br>
+    <button type="button">Login</button>
+    <!--<button type="button" onclick="test();">눌러보시오</button>--> <!--제이쿼리 안쓰고 이벤트하는방법1 온클릭을 써서 이벤트 하는 방법  //onlcick" " 안쪽은 무조건 자바스크립트-->
     <script>/*
         function test(){  // 자바스크립트에서 파라매터는 다 옵션일 뿐이다. 데이터타입을 만들려면 함수를 만들수밖에 없다.
                 alert('난 테스트함수에여'); // 지금 이것이 펑션함수
@@ -40,10 +43,10 @@
                 tableStr += '<th>';
                 tableStr += '이름';
                 tableStr += '</th>';
-                tableStr += '</tr>';
+                tableStr += '</tr>'; 
                 obj.innerHTML= tableStr;
             }
-        window.onload = function(){ // 각각다 만들고 태그로 붙이기면 할수있도록 한게 앵귤러 
+        /*window.onload = function(){ // 각각다 만들고 태그로 붙이기면 할수있도록 한게 앵귤러 
             document.querySelector('button').onclick =function(){
                 var obj = document.querySelector('#div1');// html 자바스크립트 두가지를 하나의 컴퍼넌트로 묶는다
                 makeUserTable(obj);
@@ -52,8 +55,32 @@
                     그리고 화면에서 필요한거만 가져와서 수정한다. 
                     ide 복합개발내장(통합개발툴)
                     editor은 조금 다르다. 플러그인으로 가지고있는게 아니고 연결해주면 쓸수는 있다.
-                    
                 */
+            /*}
+        }*/
+        function ElementTest(id){
+            this.obj = document.getElementById(id);
+            this.getV = function(){
+                return this.obj.value;
+            }
+            this.getId = function(){
+                return this.obj.id;
+            }
+            this.getObj = function(){ // this는 window를 얘기한다. 원래는 
+                return this.obj;
+            }
+        }
+        var eObj= new ElementTest('id111'); // elementtest 옆 id 하고 input의 아이디가 같아야한다. // 바라보는 객체가 달라진다. 제이쿼리에서 $는 함수일뿐 
+        /*alert(eObj.getV);*/
+        window.onload = function(){
+            document.querySelector('button').onclick =function(){
+                var idobj = document.getElementById('id');
+                var pwdobj = document.getElementById('pwd'); //getElementById는 뒤에 적힌 아이디의 것을 가져온다. 
+                var divobj= document.getElementById('div1');
+                /*divobj.innerHTML='입력하신 아이디 : '+idobj.value;  // 여기서 =는 기존에 가지고있는 값을 바꿔버린다.
+                divobj.innerHTML+='입력하신 비밀번호 : '+pwdobj.value; // 이거는 기존에 가지고있는 값에서 추가를 한다.*/
+                divobj.innerHTML='입력하신 아이디 : '+ eObj.getV();  // 여기서 =는 기존에 가지고있는 값을 바꿔버린다.
+                divobj.innerHTML+='입력하신 비밀번호 : '+ eObj.getId(); // 이거는 기존에 가지고있는 값에서 추가를 한다.
             }
         }
     </script>
