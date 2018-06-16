@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">div1</div> <!-- div 안에 있는 id class title 등등을 프로퍼티라고 함-->
+    <button type="button" onclick="test();">눌러보시오</button> <!--제이쿼리 안쓰고 이벤트하는방법1 온클릭을 써서 이벤트 하는 방법  //onlcick" " 안쪽은 무조건 자바스크립트-->
+    <script>/*
+        function test(){  // 자바스크립트에서 파라매터는 다 옵션일 뿐이다. 데이터타입을 만들려면 함수를 만들수밖에 없다.
+                alert('난 테스트함수에여'); // 지금 이것이 펑션함수
+            }
+        var test = function(){ // 이것은 변수함수 // 펑션함수는 어디에 선언해도 실행가능하지만 변수함수는 호출과 선언이 바뀌면 안된다.
+            alert('test변수가 맞긴하지만 함수야 '); // 지금 이게 선언인데 선언이 된 후에 호출이 되어야한다. 
+        }
+        test =function(){
+            alert('난 두번째 함수');
+        }
+        test1();
+        function test1(){
+                alert('난 테스트11함수에여');
+            }
+        window.onload = function(){*/ // window는 html DOM(최상위 객체) onload는 그림을 머리속에 들어온 시점(파싱) // 시각화 시키는것을 랜더링 그리고 그 모든 행위들을 이벤트라한다.
+            /*alert(1); // 아무것도 없으면 앞에 window가 생략되어잇는것 
+            window.alert(2);
+            alert(document.getElementById("div1").innerHTML);*/
+            /*제이쿼리 안쓰고 이벤트하는방법2 여기에다 작성하는 방법*/
+           /* document.querySelector('button').onclick =function(){ // 기존 제이쿼리 처럼 기능하게끔 해줄수 있는게 셀렉터 하지만 속도는 비교가 안된다. 
+                test();
+            } // . 이 붙었다면 점 기준으로 왼쪽이 주인 오른쪽은 소속되는것
+        }*/
+
+
+            function makeUserTable(obj){
+                var tableStr = '<table border="1">';
+                tableStr += '<tr>';
+                tableStr += '<th>';
+                tableStr += '이름';
+                tableStr += '</th>';
+                tableStr += '</tr>';
+                obj.innerHTML= tableStr;
+            }
+        window.onload = function(){ // 각각다 만들고 태그로 붙이기면 할수있도록 한게 앵귤러 
+            document.querySelector('button').onclick =function(){
+                var obj = document.querySelector('#div1');// html 자바스크립트 두가지를 하나의 컴퍼넌트로 묶는다
+                makeUserTable(obj);
+                /*
+                    컴포넌트 분리를 하는데 테이블, 그리드 , combobox 3개를 미리 잡아 놓는다. 
+                    그리고 화면에서 필요한거만 가져와서 수정한다. 
+                    ide 복합개발내장(통합개발툴)
+                    editor은 조금 다르다. 플러그인으로 가지고있는게 아니고 연결해주면 쓸수는 있다.
+                    
+                */
+            }
+        }
+    </script>
+</body>
+</html>
